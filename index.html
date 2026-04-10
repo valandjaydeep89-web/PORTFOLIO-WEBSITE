@@ -1,59 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portfolio</title>
-    <link rel="stylesheet" href="./style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaydip Portfolio</title>
+
+<style>
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+/* BODY */
+body{
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+}
+
+/* NAVBAR */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.05);
+}
+
+nav h2{
+  color:#00f7ff;
+}
+
+nav ul{
+  display:flex;
+  list-style:none;
+  gap:20px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:white;
+  transition:0.3s;
+}
+
+nav ul li a:hover{
+  color:#00f7ff;
+  text-shadow:0 0 10px #00f7ff;
+}
+
+/* SECTIONS */
+section{
+  padding:60px 40px;
+  animation:fadeIn 1s ease;
+}
+
+/* HERO */
+#home h1{
+  font-size:3rem;
+}
+
+#home h3{
+  color:#00f7ff;
+  margin:10px 0;
+}
+
+/* BUTTON */
+button{
+  margin-top:15px;
+  padding:10px 20px;
+  border:none;
+  border-radius:25px;
+  background:linear-gradient(45deg,#00f7ff,#0072ff);
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 15px #00f7ff;
+}
+
+/* CARD EFFECT */
+section{
+  background: rgba(255,255,255,0.05);
+  margin:20px;
+  border-radius:15px;
+  backdrop-filter: blur(10px);
+  box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+/* SKILLS */
+#skills ul{
+  list-style:none;
+  margin-top:10px;
+}
+
+#skills li{
+  margin:5px 0;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+</style>
+
 </head>
 
 <body>
 
 <!-- NAVBAR -->
 <nav>
-    <h2>Jaydip Portfolio</h2>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+  <h2>Jaydip Portfolio</h2>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section id="home">
-    <h1>Hi, I'm Jaydip</h1>
-    <h3>Frontend Developer</h3>
-    <p>I am a BCA student learning web development and building modern websites.</p>
-    <button>Contact Me</button>
+  <h1>Hi, I'm Jaydip</h1>
+  <h3>Frontend Developer</h3>
+  <p>I am a BCA student learning web development and building modern websites.</p>
+  <button onclick="location.href='#contact'">Contact Me</button>
 </section>
 
-<!-- ABOUT SECTION -->
+<!-- ABOUT -->
 <section id="about">
-    <h2>About Me</h2>
-    <p>
-        I am a BCA student passionate about web development.
-        I enjoy creating websites using HTML, CSS, and JavaScript.
-        Currently improving my frontend development skills through internships.
-    </p>
+  <h2>About Me</h2>
+  <p>
+    I am a BCA student passionate about web development.
+    I enjoy creating websites using HTML, CSS, and JavaScript.
+    Currently improving my frontend development skills.
+  </p>
 </section>
 
-<!-- SKILLS SECTION -->
+<!-- SKILLS -->
 <section id="skills">
-    <h2>My Skills</h2>
-    <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>Git & GitHub</li>
-    </ul>
+  <h2>My Skills</h2>
+  <ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+    <li>Git & GitHub</li>
+  </ul>
 </section>
 
-<!-- CONTACT SECTION -->
+<!-- CONTACT -->
 <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: valandjaydeep89@gmail.com</p>
-    <p>Phone: +91 9016678466</p>
+  <h2>Contact Me</h2>
+  <p>Email: valandjaydeep89@gmail.com</p>
+  <p>Phone: +91 9016678466</p>
 </section>
 
 </body>
