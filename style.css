@@ -1,0 +1,245 @@
+/* =========================
+   ROOT THEMES
+========================= */
+:root{
+  --bg:#020617;
+  --card:#0f172a;
+  --text:#e2e8f0;
+  --primary:#6366f1;
+  --secondary:#22c55e;
+}
+
+/* LIGHT MODE */
+#theme-toggle:checked ~ *{
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --text:#020617;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  transition:.4s;
+}
+
+/* =========================
+   DARK MODE BUTTON
+========================= */
+.toggle-btn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:var(--card);
+  padding:10px 14px;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:2000;
+  box-shadow:0 0 10px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   NAVBAR GLASS + MIRROR
+========================= */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 40px;
+  position:sticky;
+  top:0;
+  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.05);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+/* mirror reflection line */
+nav::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#6366f1,transparent);
+  animation:shine 3s infinite;
+}
+
+@keyframes shine{
+  0%{opacity:0;}
+  50%{opacity:1;}
+  100%{opacity:0;}
+}
+
+/* =========================
+   HERO
+========================= */
+.hero{
+  text-align:center;
+  padding:120px 20px;
+}
+
+/* gradient text */
+.hero h1{
+  font-size:40px;
+  background:linear-gradient(90deg,#6366f1,#22c55e);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* =========================
+   BUTTON FLOW (LIQUID EFFECT)
+========================= */
+.hero button,
+.project-card button{
+  position:relative;
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#6366f1,#22c55e);
+  color:white;
+  cursor:pointer;
+  overflow:hidden;
+}
+
+/* flowing shine */
+.hero button::before,
+.project-card button::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.5),transparent);
+  transition:.5s;
+}
+
+.hero button:hover::before,
+.project-card button:hover::before{
+  left:100%;
+}
+
+/* lift */
+.hero button:hover,
+.project-card button:hover{
+  transform:translateY(-5px);
+}
+
+/* =========================
+   SKILLS
+========================= */
+.skills span{
+  display:inline-block;
+  margin:10px;
+  padding:12px 22px;
+  border-radius:25px;
+  background:var(--card);
+  transition:.3s;
+}
+
+/* glow */
+.skills span:hover{
+  background:linear-gradient(135deg,#6366f1,#22c55e);
+  color:white;
+  box-shadow:0 0 20px rgba(99,102,241,0.6);
+}
+
+/* =========================
+   PROJECTS (GLASS + MIRROR)
+========================= */
+.projects{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
+}
+
+.project-card{
+  width:260px;
+  padding:25px;
+  border-radius:16px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
+  position:relative;
+  overflow:hidden;
+  transition:.4s;
+}
+
+/* mirror light effect */
+.project-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:50%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.2),transparent);
+  transform:skewX(-25deg);
+}
+
+.project-card:hover::before{
+  animation:glassMove 1s forwards;
+}
+
+@keyframes glassMove{
+  100%{left:150%;}
+}
+
+/* hover depth */
+.project-card:hover{
+  transform:translateY(-12px) scale(1.04);
+  box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* =========================
+   SOCIAL FLOAT
+========================= */
+.social{
+  position:fixed;
+  right:15px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.social a{
+  display:block;
+  margin:10px 0;
+  padding:10px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#6366f1,#22c55e);
+  color:white;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.social a:hover{
+  transform:scale(1.2);
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+  text-align:center;
+  padding:20px;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:768px){
+  nav{
+    flex-direction:column;
+  }
+}
