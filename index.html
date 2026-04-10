@@ -3,54 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jaydip | Hacker Portfolio</title>
+<title>Jaydip AI Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-font-family:'Share Tech Mono',monospace;
-background:#000;
-color:#00fff7;
+font-family:'Poppins',sans-serif;
+background:#020617;
+color:#e2e8f0;
 overflow-x:hidden;
 cursor:none;
 }
 
-/* MATRIX CANVAS */
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-2;
-}
-
 /* CURSOR */
 .cursor{
-width:12px;
-height:12px;
-background:#00fff7;
-position:fixed;
+width:15px;
+height:15px;
 border-radius:50%;
+background:#3b82f6;
+position:fixed;
 pointer-events:none;
-box-shadow:0 0 10px #00fff7,0 0 30px #8b5cf6;
 z-index:999;
+box-shadow:0 0 15px #3b82f6,0 0 30px #8b5cf6;
+}
+
+/* BACKGROUND ORBS */
+.orb{
+position:fixed;
+width:400px;
+height:400px;
+background:radial-gradient(circle,#3b82f6,transparent);
+filter:blur(120px);
+animation:float 10s infinite alternate;
+z-index:-1;
+}
+
+.orb2{
+right:0;
+background:radial-gradient(circle,#8b5cf6,transparent);
+animation-delay:3s;
+}
+
+@keyframes float{
+from{transform:translateY(0)}
+to{transform:translateY(-100px)}
 }
 
 /* NAV */
 nav{
 display:flex;
 justify-content:space-between;
-padding:20px;
-background:rgba(0,0,0,0.5);
-backdrop-filter:blur(10px);
+padding:20px 40px;
+backdrop-filter:blur(15px);
+background:rgba(255,255,255,0.03);
 }
 
 nav h2{
 font-family:'Orbitron';
-color:#00fff7;
+background:linear-gradient(90deg,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 nav ul{
@@ -60,7 +76,7 @@ list-style:none;
 }
 
 nav a{
-color:#00fff7;
+color:white;
 text-decoration:none;
 }
 
@@ -71,104 +87,77 @@ padding:120px 20px;
 }
 
 #home h1{
+font-family:'Orbitron';
 font-size:48px;
-text-shadow:0 0 10px #00fff7,0 0 40px #8b5cf6;
+background:linear-gradient(90deg,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-/* GLITCH */
-.glitch{
-position:relative;
-color:#fff;
-}
-.glitch::before,.glitch::after{
-content:attr(data-text);
-position:absolute;
-left:0;
-}
-.glitch::before{
-animation:glitch1 1s infinite;
-color:#00fff7;
-}
-.glitch::after{
-animation:glitch2 1s infinite;
-color:#8b5cf6;
-}
-
-@keyframes glitch1{
-0%{left:2px}
-50%{left:-2px}
-100%{left:2px}
-}
-@keyframes glitch2{
-0%{left:-2px}
-50%{left:2px}
-100%{left:-2px}
+#typing{
+color:#38bdf8;
+margin:10px 0;
+text-shadow:0 0 10px #38bdf8;
 }
 
 /* BUTTON */
 .btn{
 display:inline-block;
 margin:10px;
-padding:10px 25px;
-border-radius:20px;
-background:#00fff7;
-color:black;
+padding:12px 28px;
+border-radius:30px;
+background:linear-gradient(135deg,#3b82f6,#8b5cf6);
+color:white;
 text-decoration:none;
-transition:.3s;
+transition:.4s;
 }
 
 .btn:hover{
-box-shadow:0 0 20px #00fff7,0 0 40px #8b5cf6;
 transform:scale(1.1);
+box-shadow:0 0 20px #3b82f6,0 0 40px #8b5cf6;
 }
 
 /* 3D CARDS */
 .projects{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
 padding:20px;
 }
 
 .card{
-background:rgba(0,255,247,0.05);
+background:rgba(255,255,255,0.05);
+border-radius:15px;
 padding:20px;
-border-radius:10px;
 transform-style:preserve-3d;
 transition:.3s;
 }
 
 .card:hover{
-transform:rotateY(15deg) rotateX(10deg);
-box-shadow:0 20px 40px rgba(0,255,247,0.5);
+transform:rotateY(10deg) rotateX(10deg) scale(1.05);
+box-shadow:0 20px 40px rgba(0,0,0,0.7);
 }
 
-/* TERMINAL STYLE */
-.terminal{
-background:black;
-padding:20px;
-border-radius:10px;
-margin:20px;
-font-size:14px;
-}
-
+/* CONTACT */
 input,textarea{
 width:100%;
-margin:5px 0;
+margin:8px 0;
 padding:10px;
-background:black;
-color:#00fff7;
-border:1px solid #00fff7;
+border-radius:10px;
+border:none;
+background:#0f172a;
+color:white;
 }
 
 button{
-margin-top:10px;
 padding:10px;
-background:#00fff7;
 border:none;
-cursor:pointer;
+border-radius:20px;
+background:#3b82f6;
+color:white;
 }
 
+/* ANIMATION */
 .hidden{opacity:0;transform:translateY(30px)}
 .show{opacity:1;transform:translateY(0);transition:.6s}
 
@@ -177,11 +166,12 @@ cursor:pointer;
 
 <body>
 
-<canvas id="matrix"></canvas>
 <div class="cursor"></div>
+<div class="orb"></div>
+<div class="orb orb2"></div>
 
 <nav>
-<h2>⚡ JAYDIP</h2>
+<h2>⚡ Jaydip</h2>
 <ul>
 <li><a href="#home">Home</a></li>
 <li><a href="#projects">Projects</a></li>
@@ -190,72 +180,42 @@ cursor:pointer;
 </nav>
 
 <section id="home">
-<h1 class="glitch" data-text="HACKER MODE">HACKER MODE</h1>
-<p id="typing"></p>
-<a href="#" class="btn">Enter</a>
+<h1>AI Portfolio 🚀</h1>
+<h3 id="typing"></h3>
+<a href="#" class="btn">Resume</a>
+<a href="#contact" class="btn">Contact</a>
 </section>
 
 <section id="projects" class="hidden">
-<h2 style="text-align:center">PROJECTS</h2>
+<h2 style="text-align:center">💼 Projects</h2>
+
 <div class="projects">
-<div class="card">AI Portfolio</div>
-<div class="card">3D Website</div>
-<div class="card">Cyber UI</div>
+<div class="card">
+<h3>Portfolio</h3>
+<p>3D futuristic UI</p>
 </div>
+
+<div class="card">
+<h3>Landing Page</h3>
+<p>Cyberpunk design</p>
+</div>
+</div>
+
 </section>
 
-<section id="contact" class="hidden">
-<h2>CONTACT</h2>
+<section id="contact" class="hidden" style="padding:40px">
+<h2>📩 Contact</h2>
 
-<div class="terminal">
-<p>> Send Message...</p>
 <form>
-<input placeholder="Name">
-<input placeholder="Email">
+<input type="text" placeholder="Name">
+<input type="email" placeholder="Email">
 <textarea placeholder="Message"></textarea>
-<button>Send</button>
+<button>Send 🚀</button>
 </form>
-</div>
 
 </section>
 
 <script>
-
-/* MATRIX */
-const canvas=document.getElementById("matrix");
-const ctx=canvas.getContext("2d");
-
-canvas.height=window.innerHeight;
-canvas.width=window.innerWidth;
-
-let letters="01";
-letters=letters.split("");
-
-let fontSize=14;
-let columns=canvas.width/fontSize;
-let drops=[];
-
-for(let x=0;x<columns;x++) drops[x]=1;
-
-function draw(){
-ctx.fillStyle="rgba(0,0,0,0.05)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="#00fff7";
-ctx.font=fontSize+"px monospace";
-
-for(let i=0;i<drops.length;i++){
-let text=letters[Math.floor(Math.random()*letters.length)];
-ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-
-if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
-drops[i]=0;
-
-drops[i]++;
-}
-}
-
-setInterval(draw,33);
 
 /* CURSOR */
 const cursor=document.querySelector(".cursor");
@@ -265,7 +225,7 @@ cursor.style.left=e.clientX+"px";
 });
 
 /* TYPING */
-let t=["ACCESS GRANTED","LOADING AI SYSTEM","WELCOME DEVELOPER"];
+let t=["AI Developer","3D UI Designer","Future Creator"];
 let i=0,j=0,cur="",del=false;
 
 function type(){
@@ -277,7 +237,7 @@ document.getElementById("typing").innerHTML=cur;
 if(j==t[i].length) del=true;
 if(j==0 && del){del=false;i=(i+1)%t.length;}
 
-setTimeout(type,80);
+setTimeout(type,90);
 }
 type();
 
