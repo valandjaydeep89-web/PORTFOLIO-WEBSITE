@@ -3,118 +3,126 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jaydip Portfolio</title>
+<title>Jaydip | Portfolio</title>
 
 <style>
 
 /* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI',sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+
+/* COLORS */
+:root{
+  --bg:#0f2027;
+  --text:#fff;
+  --card:rgba(255,255,255,0.05);
+  --accent:#00f7ff;
+}
+
+.light{
+  --bg:#fff;
+  --text:#111;
+  --card:#f3f3f3;
 }
 
 /* BODY */
 body{
-  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  color:white;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:var(--text);
+  transition:.4s;
 }
 
-/* NAVBAR */
+/* NAV */
 nav{
+  position:sticky;
+  top:0;
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  padding:20px 40px;
-  backdrop-filter: blur(10px);
-  background: rgba(255,255,255,0.05);
-}
-
-nav h2{
-  color:#00f7ff;
+  padding:15px 30px;
+  backdrop-filter:blur(10px);
 }
 
 nav ul{
   display:flex;
-  list-style:none;
   gap:20px;
+  list-style:none;
 }
 
-nav ul li a{
+nav a{
+  color:var(--text);
   text-decoration:none;
-  color:white;
-  transition:0.3s;
 }
 
-nav ul li a:hover{
-  color:#00f7ff;
-  text-shadow:0 0 10px #00f7ff;
-}
-
-/* SECTIONS */
-section{
-  padding:60px 40px;
-  animation:fadeIn 1s ease;
+.toggle{
+  cursor:pointer;
 }
 
 /* HERO */
-#home h1{
-  font-size:3rem;
+#home{
+  text-align:center;
+  padding:80px 20px;
 }
 
-#home h3{
-  color:#00f7ff;
-  margin:10px 0;
+#home img{
+  width:120px;
+  border-radius:50%;
+  box-shadow:0 0 20px var(--accent);
 }
+
+#typing{color:var(--accent)}
 
 /* BUTTON */
-button{
-  margin-top:15px;
+.btn{
+  display:inline-block;
+  margin:10px;
   padding:10px 20px;
-  border:none;
   border-radius:25px;
   background:linear-gradient(45deg,#00f7ff,#0072ff);
   color:white;
-  cursor:pointer;
-  transition:0.3s;
+  text-decoration:none;
 }
 
-button:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 15px #00f7ff;
-}
-
-/* CARD EFFECT */
-section{
-  background: rgba(255,255,255,0.05);
+/* CARD */
+.card{
+  background:var(--card);
+  padding:20px;
   margin:20px;
   border-radius:15px;
-  backdrop-filter: blur(10px);
-  box-shadow:0 0 20px rgba(0,0,0,0.3);
 }
 
-/* SKILLS */
-#skills ul{
-  list-style:none;
-  margin-top:10px;
+/* PROJECTS */
+.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 }
 
-#skills li{
+/* FORM */
+input,textarea{
+  width:100%;
   margin:5px 0;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+}
+
+button{
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  border-radius:20px;
+  background:var(--accent);
+  cursor:pointer;
+}
+
+/* SOCIAL */
+.social a{
+  margin:10px;
+  color:var(--accent);
+  text-decoration:none;
 }
 
 /* ANIMATION */
-@keyframes fadeIn{
-  from{
-    opacity:0;
-    transform:translateY(20px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
+.hidden{opacity:0;transform:translateY(20px)}
+.show{opacity:1;transform:translateY(0);transition:.6s}
 
 </style>
 
@@ -122,52 +130,93 @@ section{
 
 <body>
 
-<!-- NAVBAR -->
 <nav>
-  <h2>Jaydip Portfolio</h2>
+  <h2>Jaydip</h2>
   <ul>
     <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="toggle" onclick="toggleMode()">🌙</div>
 </nav>
 
-<!-- HERO -->
 <section id="home">
-  <h1>Hi, I'm Jaydip</h1>
-  <h3>Frontend Developer</h3>
-  <p>I am a BCA student learning web development and building modern websites.</p>
-  <button onclick="location.href='#contact'">Contact Me</button>
+  <img src="https://via.placeholder.com/120">
+  <h1>Jaydip</h1>
+  <h3 id="typing"></h3>
+
+  <a href="#" class="btn">Download Resume</a>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    I am a BCA student passionate about web development.
-    I enjoy creating websites using HTML, CSS, and JavaScript.
-    Currently improving my frontend development skills.
-  </p>
+<section id="projects" class="hidden">
+  <h2>Projects</h2>
+
+  <div class="projects">
+    <div class="card">
+      <h3>Portfolio</h3>
+      <p>Modern portfolio website</p>
+      <a href="#" class="btn">Live</a>
+      <a href="#" class="btn">GitHub</a>
+    </div>
+
+    <div class="card">
+      <h3>Landing Page</h3>
+      <p>Responsive landing UI</p>
+      <a href="#" class="btn">Live</a>
+      <a href="#" class="btn">GitHub</a>
+    </div>
+  </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <h2>My Skills</h2>
-  <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JavaScript</li>
-    <li>Git & GitHub</li>
-  </ul>
+<section id="contact" class="hidden">
+  <h2>Contact</h2>
+
+  <form>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Email">
+    <textarea placeholder="Message"></textarea>
+    <button>Send</button>
+  </form>
+
+  <div class="social">
+    <a href="#">GitHub</a>
+    <a href="#">LinkedIn</a>
+  </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p>Email: valandjaydeep89@gmail.com</p>
-  <p>Phone: +91 9016678466</p>
-</section>
+<script>
+
+/* DARK MODE */
+function toggleMode(){
+  document.body.classList.toggle("light");
+}
+
+/* TYPING */
+let t=["Frontend Dev","Web Designer"];
+let i=0,j=0,cur="",del=false;
+
+function type(){
+  if(!del && j<=t[i].length) cur=t[i].substring(0,j++);
+  else if(del && j>=0) cur=t[i].substring(0,j--);
+
+  document.getElementById("typing").innerHTML=cur;
+
+  if(j==t[i].length) del=true;
+  if(j==0 && del){del=false;i=(i+1)%t.length;}
+
+  setTimeout(type,100);
+}
+type();
+
+/* SCROLL */
+let obs=new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(x.isIntersecting) x.target.classList.add("show");
+  });
+});
+document.querySelectorAll(".hidden").forEach(el=>obs.observe(el));
+
+</script>
 
 </body>
 </html>
